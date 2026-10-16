@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "kleinanzeigen": {
+      "type": "http",
+      "url": "https://mcp.bunteban.de/kleinanzeigen/mcp",
+      "oauth": {
+        "scopes": "openid profile email offline_access"
+      }
+    }
+  }
+}

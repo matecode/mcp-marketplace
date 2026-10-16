@@ -1,0 +1,21 @@
+{
+  "name": "kleinanzeigen-mcp",
+  "version": "0.1.0",
+  "description": "Kleinanzeigen-Werkzeuge des bestehenden Homelab-Dienstes.",
+  "author": {
+    "name": "matecode"
+  },
+  "homepage": "https://github.com/matecode/mcp-marketplace",
+  "repository": "https://github.com/matecode/mcp-marketplace",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Kleinanzeigen MCP",
+    "shortDescription": "Kleinanzeigen-Werkzeuge des bestehenden Homelab-Dienstes.",
+    "developerName": "matecode",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ]
+  }
+}

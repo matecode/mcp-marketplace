@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "lizu": {
+      "type": "http",
+      "url": "https://mcp.bunteban.de/lizu/mcp",
+      "oauth": {
+        "scopes": "openid profile email offline_access lizu"
+      }
+    }
+  }
+}

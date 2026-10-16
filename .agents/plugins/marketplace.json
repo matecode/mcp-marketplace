@@ -1,0 +1,68 @@
+{
+  "name": "mate-mcp",
+  "interface": {
+    "displayName": "Mate MCPs"
+  },
+  "plugins": [
+    {
+      "name": "mail-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mail-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "calendar-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/calendar-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "obsidian-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/obsidian-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "kleinanzeigen-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/kleinanzeigen-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "lizu-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/lizu-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "lizu-mcp",
+  "version": "0.1.0",
+  "description": "Nextcloud-Werkzeuge mit persönlicher Kontozuordnung.",
+  "author": {
+    "name": "matecode"
+  },
+  "homepage": "https://github.com/matecode/mcp-marketplace",
+  "repository": "https://github.com/matecode/mcp-marketplace",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "LiZu MCP",
+    "shortDescription": "Nextcloud-Werkzeuge mit persönlicher Kontozuordnung.",
+    "developerName": "matecode",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ]
+  }
+}

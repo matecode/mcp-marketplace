@@ -1,0 +1,42 @@
+{
+  "name": "mate-mcp",
+  "owner": {
+    "name": "matecode"
+  },
+  "metadata": {
+    "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "mail-mcp",
+      "source": "./plugins/mail-mcp",
+      "description": "Mail und Sieve über das persönliche Mailbox.org-Konto.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "calendar-mcp",
+      "source": "./plugins/calendar-mcp",
+      "description": "Kalender und Kontakte über das persönliche Mailbox.org-Konto.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "obsidian-mcp",
+      "source": "./plugins/obsidian-mcp",
+      "description": "Notizen im freigegebenen Obsidian-Vault lesen und bearbeiten.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "kleinanzeigen-mcp",
+      "source": "./plugins/kleinanzeigen-mcp",
+      "description": "Kleinanzeigen-Werkzeuge des bestehenden Homelab-Dienstes.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "lizu-mcp",
+      "source": "./plugins/lizu-mcp",
+      "description": "Nextcloud-Werkzeuge mit persönlicher Kontozuordnung.",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mail": {
+      "type": "http",
+      "url": "https://mcp.bunteban.de/mail/mcp",
+      "oauth": {
+        "scopes": "openid profile email offline_access mailbox"
+      }
+    }
+  }
+}

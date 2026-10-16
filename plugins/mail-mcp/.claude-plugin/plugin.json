@@ -1,0 +1,10 @@
+{
+  "name": "mail-mcp",
+  "version": "0.1.0",
+  "description": "Mail und Sieve über das persönliche Mailbox.org-Konto.",
+  "author": {
+    "name": "matecode"
+  },
+  "homepage": "https://github.com/matecode/mcp-marketplace",
+  "repository": "https://github.com/matecode/mcp-marketplace"
+}
