@@ -98,7 +98,7 @@ Keine Secrets, Nutzdaten, internen NAS-Pfade oder Serverkonfigurationen überneh
 - Keine persönliche Clientkonfiguration geändert; keine MCP-Werkzeuge aufgerufen und keine laufenden Server geändert.
 - Noch offen: persönlicher OAuth-Login, tatsächliche Werkzeugaufrufe und Refresh aus installierten Plugins; Codex-Desktop-Anzeige und Claude-Web-/Cowork-Import.
 
-GitHub-Veröffentlichung und Remote-Installation werden nach dem Push unten ergänzt. Eine lokale Installation beweist noch keinen Abruf des privaten Remote-Repositorys.
+GitHub-API bestätigt `PRIVATE` und Hauptbranch `main`. Beide Clients haben das private Repository über SSH mit unveränderter Hostschlüsselprüfung abgerufen und das Mail-Plugin aus dem Remote-Katalog installiert. Claude erkennt den Mail-MCP; Codex lädt die korrekte Mail-Adresse und meldet `not_logged_in`. Dies bestätigt Remote-Installation, keinen OAuth-Login. Quelle: GitHub-API und isolierte CLI-Prüfungen am 2026-10-16.
 
 ## Quellen
 
