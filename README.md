@@ -71,6 +71,12 @@ Bei OpenAI sind lokale/Git-Marketplaces von der universellen öffentlichen Plugi
 
 Installation allein bestätigt weder OAuth-Login noch Werkzeugfunktion, Refresh oder Datenisolation. Schreibwerkzeuge können vorhanden sein; das Paket erweitert keine serverseitige Freigabe und enthält keine lokale Allowlist. Gesprächsablage-Regeln bleiben im Obsidian-MCP und seiner zentralen Vault-Notiz; keine zusätzliche Skill-Kopie.
 
+## Warum zwei unterschiedliche Marketplace-Dateien?
+
+Claude Code verwendet `.claude-plugin/marketplace.json` mit `owner`, optionalen `metadata` und einem Plugin-Pfad als `source`-String. Der native Codex-Katalog unter `.agents/plugins/marketplace.json` verwendet hier ein `source`-Objekt sowie `interface.displayName`, `category` und `policy` für Installations-/Anmeldeverhalten.
+
+Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben fünf Plugin-Verzeichnisse; die MCP-Adressen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert die Übereinstimmung von Plugin-Namen und Pfaden sowie die vorgesehenen Policies.
+
 ## Pflege und Prüfung
 
 Claude: `.claude-plugin/marketplace.json`. Codex: `.agents/plugins/marketplace.json`. Beide verweisen auf dieselben Verzeichnisse in `plugins/`. Je Plugin werden `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json` und `.mcp.json` gepflegt. Die nachweislich unterstützten Kompatibilitätsformate vermeiden hier eine zusätzliche portable Manifest-Kopie.
