@@ -1,6 +1,6 @@
 # Mate MCP Marketplace
 
-Privater GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.1.0.
+Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.1.0.
 
 ## Plugins
 
@@ -16,14 +16,14 @@ Jedes Plugin lässt sich einzeln installieren. Die Pakete starten keine lokalen 
 
 ## Voraussetzungen
 
-GitHub-Lesezugriff auf dieses private Repository sowie eine funktionierende nichtinteraktive Git-Anmeldung. Bei SSH muss der Schlüssel bereits nutzbar und der GitHub-Hostschlüssel bekannt sein; Hostschlüsselprüfung nicht abschalten. HTTPS benötigt einen vorhandenen Credential-Helper. Keine Tokens in Remote-URLs oder Manifesten eintragen.
+Der öffentliche Katalog kann über HTTPS ohne GitHub-Konto oder Git-Zugangsdaten geladen werden. Für diesen Weg die vollständige HTTPS-Repository-Adresse verwenden. Bei optionalem SSH-Zugang muss der Schlüssel bereits nutzbar und der GitHub-Hostschlüssel bekannt sein; Hostschlüsselprüfung nicht abschalten. Keine Tokens in Remote-URLs oder Manifesten eintragen.
 
 GitHub-Zugriff und MCP-Zugriff sind unabhängig: Über Authentik persönlich anmelden und die jeweilige Dienstfreigabe erhalten. Mail/Kalender und LiZu brauchen die eigenen Kontoeinträge in der vorgesehenen OpenBao-Verwaltung. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung.
 
 ## Claude Code
 
 ```sh
-claude plugin marketplace add matecode/mcp-marketplace
+claude plugin marketplace add https://github.com/matecode/mcp-marketplace.git
 claude plugin install mail-mcp@mate-mcp
 ```
 
@@ -38,7 +38,7 @@ Weitere Plugin-IDs aus der Tabelle einzeln installieren. In einer neuen Sitzung 
 ## Codex CLI und Desktop
 
 ```sh
-codex plugin marketplace add matecode/mcp-marketplace
+codex plugin marketplace add https://github.com/matecode/mcp-marketplace.git
 codex plugin add mail-mcp@mate-mcp
 codex mcp list
 ```
@@ -104,7 +104,7 @@ Keine Secrets, Nutzdaten, internen NAS-Pfade oder Serverkonfigurationen überneh
 - Keine persönliche Clientkonfiguration geändert; keine MCP-Werkzeuge aufgerufen und keine laufenden Server geändert.
 - Noch offen: persönlicher OAuth-Login, tatsächliche Werkzeugaufrufe und Refresh aus installierten Plugins; Codex-Desktop-Anzeige und Claude-Web-/Cowork-Import.
 
-GitHub-API bestätigt `PRIVATE` und Hauptbranch `main`. Beide Clients haben das private Repository über SSH mit unveränderter Hostschlüsselprüfung abgerufen und das Mail-Plugin aus dem Remote-Katalog installiert. Claude erkennt den Mail-MCP; Codex lädt die korrekte Mail-Adresse und meldet `not_logged_in`. Dies bestätigt Remote-Installation, keinen OAuth-Login. Quelle: GitHub-API und isolierte CLI-Prüfungen am 2026-10-16.
+Beim ursprünglichen Einrichtungsstand bestätigte die GitHub-API `PRIVATE` und Hauptbranch `main`. Beide Clients haben das private Repository über SSH mit unveränderter Hostschlüsselprüfung abgerufen und das Mail-Plugin aus dem Remote-Katalog installiert. Claude erkennt den Mail-MCP; Codex lädt die korrekte Mail-Adresse und meldet `not_logged_in`. Dies bestätigt Remote-Installation, keinen OAuth-Login. Quelle: GitHub-API und isolierte CLI-Prüfungen am 2026-10-16.
 
 ## Quellen
 
@@ -113,3 +113,9 @@ GitHub-API bestätigt `PRIVATE` und Hauptbranch `main`. Beide Clients haben das 
 - [Claude: Marketplace erstellen](https://code.claude.com/docs/en/plugins/create-marketplace)
 - [Claude: private Marketplace-Zugriffe](https://code.claude.com/docs/en/plugins/host-marketplace)
 - [Claude: MCP-Komponenten](https://code.claude.com/docs/en/plugins/components#mcp-servers)
+
+## Öffentliche Freigabe – 2026-10-17
+
+Auf ausdrücklichen Nutzerauftrag auf öffentlich umgestellt. GitHub-API bestätigt `PUBLIC`; eine zusätzliche anonyme HTTPS-Anfrage ohne Zugangsdaten bestätigt `private=false`. Das Infrastruktur-Repository `matecode/homelab-infra` bleibt `PRIVATE`. Quelle: authentifizierte GitHub-Abfrage und anonymer API-Abruf am 2026-10-17, 03:03 CEST. Vollständige bisherige Marketplace-Git-Historie auf Schlüssel-/Tokenmuster und interne IP-/NAS-/lokale Pfade geprüft, keine Treffer; keine Actions-Läufe vorhanden.
+
+Anonymer Git-Abruf über HTTPS scheiterte bei dieser Prüfung an einem Verbindungstimeout; kein erneuter Client-Installationstest nach der Sichtbarkeitsänderung. Persönliche MCP-Anmeldung und Dienstfreigaben sind weiterhin erforderlich. Keine laufenden MCP-Dienste oder persönlichen Client-Einstellungen geändert.
