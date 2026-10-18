@@ -2,9 +2,13 @@
 
 Verbindung: `https://mcp.bunteban.de/homeassistant/mcp`.
 
-Mit Authentik anmelden; die Freigabegruppe für Home Assistant ist erforderlich. Jeder Nutzer hinterlegt seinen eigenen HA-Token im persönlichen OpenBao-Eintrag, Feld `token`. `homeassistant_connection_status` zeigt den passenden Einrichtungslink. Die OpenBao-Oberfläche ist nur im Heimnetz oder per bestehendem VPN erreichbar. Keine Tokens im Chat eingeben.
+Mit dem eigenen Home-Assistant-Konto unter `https://ha.bunteban.de` anmelden. Client-ID, Client-Secret und zusätzliche Scopes leer lassen; der Original-Webhook-Proxy vermittelt HA-OAuth. Kein persönlicher HA-Token in OpenBao nötig. Keine Tokens im Chat eingeben. Die Werkzeugrechte folgen dem HA-Zugang der Server-App; die Anmeldung erzeugt keine individuelle Werkzeug-Allowlist.
 
-Die Werkzeuge verwenden ausschließlich den persönlichen HA-Token und dessen Rechte. Das Plugin richtet weder einen HA-Server noch ein HA-Konto ein. Alle angebotenen HA-MCP-Werkzeuge sind verfügbar, einschließlich Gerätesteuerung und administrativer Änderungen, soweit das persönliche HA-Konto sie erlaubt.
+Ab Plugin **0.3.0** ist die Verbindung auf die Original-HA-Apps mit HA-OAuth umgestellt. Bestehende Clients müssen erneut bei Home Assistant autorisiert werden; alte Authentik-Tokens funktionieren an diesem Endpunkt nicht. In Codex bei Problemen die dynamische Registrierung verwenden: `codex mcp login homeassistant --oauth-client-registration dcr` (Servernamen aus der eigenen Konfiguration verwenden).
+
+Verbindungsprüfung am 2026-10-18: Originalserver `ha-mcp` 8.7.0, 83 Werkzeuge, HA-OAuth-Login, lesende Systemübersicht und erneuter Zugriff nach OAuth-Refresh erfolgreich. Anonyme Zugriffe und ungültige Tokens werden mit 401 verweigert; Ressourcenmetadaten nennen die feste MCP-Adresse. Keine Geräte als Test geschaltet. OAuth bleibt laut Upstream Beta; Claude-/ChatGPT-Clientanmeldung und deren eigener Refresh sind separat zu prüfen. Keine Claude-Web-Installation vorgenommen.
+
+Das Plugin verbindet den vorhandenen Original-HA-MCP. Alle angebotenen Werkzeuge sind verfügbar, einschließlich Gerätesteuerung und administrativer Änderungen mit den Rechten der Server-App.
 
 Installation, OAuth-Anmeldung, Werkzeugfunktion und Refresh sind getrennte Prüfungen. Bei bereits vorhandenem separat eingerichteten Home-Assistant-MCP zunächst doppelte Verbindungen vermeiden.
 

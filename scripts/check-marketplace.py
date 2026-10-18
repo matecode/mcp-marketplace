@@ -10,7 +10,7 @@ EXPECTED = {
     "obsidian": "openid profile email offline_access",
     "kleinanzeigen": "openid profile email offline_access",
     "lizu": "openid profile email offline_access lizu",
-    "homeassistant": "openid profile email offline_access homeassistant",
+    "homeassistant": None,
 }
 
 def read(path):
@@ -39,10 +39,10 @@ for key, scopes in EXPECTED.items():
     assert cm["name"] == om["name"] == name
     assert cm["version"] == om["version"] == ce["version"]
     assert om["mcpServers"] == "./.mcp.json"
-    assert read(relative + "/.mcp.json") == {"mcpServers": {key: {
-        "type": "http", "url": f"https://mcp.bunteban.de/{key}/mcp",
-        "oauth": {"scopes": scopes},
-    }}}
+    connection = {"type": "http", "url": f"https://mcp.bunteban.de/{key}/mcp"}
+    if scopes is not None:
+        connection["oauth"] = {"scopes": scopes}
+    assert read(relative + "/.mcp.json") == {"mcpServers": {key: connection}}
 ha = ROOT / 'plugins/homeassistant-mcp'
 origin = read('plugins/homeassistant-mcp/upstream-skill.json')
 assert origin['repository'] == 'https://github.com/homeassistant-ai/skills'

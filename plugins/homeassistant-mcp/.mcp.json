@@ -2,10 +2,7 @@
   "mcpServers": {
     "homeassistant": {
       "type": "http",
-      "url": "https://mcp.bunteban.de/homeassistant/mcp",
-      "oauth": {
-        "scopes": "openid profile email offline_access homeassistant"
-      }
+      "url": "https://mcp.bunteban.de/homeassistant/mcp"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "homeassistant-mcp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Home Assistant per MCP nutzen, mit dem Best-Practice-Skill aus dem Video.",
   "author": {
     "name": "matecode"

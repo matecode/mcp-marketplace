@@ -21,7 +21,7 @@ Jedes Plugin lässt sich einzeln installieren. Die Pakete starten keine lokalen 
 
 Der öffentliche Katalog kann über HTTPS ohne GitHub-Konto oder Git-Zugangsdaten geladen werden. Für diesen Weg die vollständige HTTPS-Repository-Adresse verwenden. Bei optionalem SSH-Zugang muss der Schlüssel bereits nutzbar und der GitHub-Hostschlüssel bekannt sein; Hostschlüsselprüfung nicht abschalten. Keine Tokens in Remote-URLs oder Manifesten eintragen.
 
-GitHub-Zugriff und MCP-Zugriff sind unabhängig: Über Authentik persönlich anmelden und die jeweilige Dienstfreigabe erhalten. Home Assistant benötigt einen eigenen HA-Token je Nutzer im persönlichen OpenBao-Eintrag; `homeassistant_connection_status` zeigt die Einrichtung. Es gelten die Rechte dieses HA-Kontos. Mail/Kalender und LiZu brauchen die eigenen Kontoeinträge in der vorgesehenen OpenBao-Verwaltung. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung.
+GitHub-Zugriff und MCP-Zugriff sind unabhängig. Home Assistant verwendet ab Plugin 0.3.0 die eigene HA-Anmeldung unter `https://ha.bunteban.de`; OAuth-Felder und zusätzliche Scopes leer lassen. Werkzeugrechte folgen dem Zugang der HA-Server-App. Die anderen Dienste verwenden Authentik und ihre jeweilige Freigabe; Mail/Kalender und LiZu brauchen persönliche Kontoeinträge in OpenBao. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung.
 
 ## Claude Code
 
@@ -62,7 +62,7 @@ codex mcp login calendar --scopes openid,profile,email,offline_access,mailbox
 codex mcp login lizu --scopes openid,profile,email,offline_access,lizu
 codex mcp login obsidian --scopes openid,profile,email,offline_access
 codex mcp login kleinanzeigen --scopes openid,profile,email,offline_access
-codex mcp login homeassistant --scopes openid,profile,email,offline_access,homeassistant
+codex mcp login homeassistant --oauth-client-registration dcr
 ```
 
 Bei schon separat eingerichteten MCPs zuerst bestehende Einträge prüfen, um doppelte Verbindungen und Namenskollisionen zu vermeiden. Keine bestehende Clientkonfiguration blind überschreiben.
@@ -124,6 +124,10 @@ Auf ausdrücklichen Nutzerauftrag auf öffentlich umgestellt. GitHub-API bestät
 
 Anonymer Git-Abruf über HTTPS scheiterte bei dieser Prüfung an einem Verbindungstimeout; kein erneuter Client-Installationstest nach der Sichtbarkeitsänderung. Persönliche MCP-Anmeldung und Dienstfreigaben sind weiterhin erforderlich. Keine laufenden MCP-Dienste oder persönlichen Client-Einstellungen geändert.
 
-## Home Assistant hinzugefügt – Paketprüfung 2026-10-18
+## Home Assistant 0.3.0: Original-HA-Apps und HA-OAuth – 2026-10-18
+
+Stabile MCP-Adresse auf Original-HA-MCP 8.7.0 und Webhook-Proxy mit HA-OAuth umgestellt. Authentik-Scopes und persönliche OpenBao-HA-Vermittlung aus dem Plugin entfernt; Video-Skill unverändert erhalten. Codex-HA-Login, 83 Werkzeuge, echte lesende Systemübersicht und OAuth-Refresh mit anschließendem MCP-Zugriff bestätigt. Bestehende Clients neu bei HA anmelden; andere MCP-Plugins unverändert. Claude-/ChatGPT-Login separat offen, keine Claude-Web-Installation.
+
+## Historische Home-Assistant-Aufnahme – Paketprüfung 2026-10-18
 
 Sechstes Plugin `homeassistant-mcp`, stabile HTTPS-Adresse und Scopes einschließlich `homeassistant`. Offline-Konsistenzprüfung sowie strenge Claude-Paketvalidierung bestanden; Home-Assistant-Paket in isolierten Codex-/Claude-Code-Konfigurationen geladen. Dies ist keine Installation in Claude Web. Persönliche Authentik-Anmeldung, eigener HA-Token in OpenBao und tatsächliche HA-Werkzeugfunktion sind getrennte Voraussetzungen. Gateway-Rollout am selben Tag geprüft: MCP anonym 401, OAuth-Metadaten 200 mit korrekter Adresse und Authentik-Scopes. Codex-Verbindung über Authentik lädt 78 Werkzeuge. Persönlicher HA-Aufruf/Tokenpflege und tatsächlicher Refresh aus dem Marketplace-Plugin sind davon unabhängig.
