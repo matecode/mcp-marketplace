@@ -1,0 +1,10 @@
+{
+  "name": "homeassistant-mcp",
+  "version": "0.1.0",
+  "description": "Home Assistant lesen, Geräte steuern und Automationen verwalten.",
+  "author": {
+    "name": "matecode"
+  },
+  "homepage": "https://github.com/matecode/mcp-marketplace",
+  "repository": "https://github.com/matecode/mcp-marketplace"
+}

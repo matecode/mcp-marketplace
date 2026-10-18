@@ -9,6 +9,7 @@ EXPECTED = {
     "obsidian": "openid profile email offline_access",
     "kleinanzeigen": "openid profile email offline_access",
     "lizu": "openid profile email offline_access lizu",
+    "homeassistant": "openid profile email offline_access homeassistant",
 }
 
 def read(path):
@@ -20,7 +21,7 @@ assert claude["name"] == codex["name"] == "mate-mcp"
 expected_names = {key + "-mcp" for key in EXPECTED}
 for catalog in (claude, codex):
     names = [entry["name"] for entry in catalog["plugins"]]
-    assert len(names) == len(set(names)) == 5
+    assert len(names) == len(set(names)) == len(EXPECTED)
     assert set(names) == expected_names
 for key, scopes in EXPECTED.items():
     name = key + "-mcp"
@@ -41,4 +42,4 @@ for key, scopes in EXPECTED.items():
         "type": "http", "url": f"https://mcp.bunteban.de/{key}/mcp",
         "oauth": {"scopes": scopes},
     }}}
-print("Fünf konsistente Plugins, zwei Kataloge; nur festgelegte öffentliche HTTP-Verbindungsdaten.")
+print("Sechs konsistente Plugins, zwei Kataloge; nur festgelegte öffentliche HTTP-Verbindungsdaten.")

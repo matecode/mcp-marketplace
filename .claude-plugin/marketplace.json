@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
@@ -36,6 +36,12 @@
       "name": "lizu-mcp",
       "source": "./plugins/lizu-mcp",
       "description": "Nextcloud-Werkzeuge mit persönlicher Kontozuordnung.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "homeassistant-mcp",
+      "source": "./plugins/homeassistant-mcp",
+      "description": "Home Assistant lesen, Geräte steuern und Automationen verwalten.",
       "version": "0.1.0"
     }
   ]

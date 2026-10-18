@@ -11,3 +11,5 @@ Prüfen: `python3 scripts/check-marketplace.py` und `claude plugin validate . --
 Übergreifendes Betriebswissen im Homelab-Vault; Infrastrukturquellen in `matecode/homelab-infra`.
 
 Öffentliche Git-Historie mitprüfen; niemals Geheimnisse oder interne Betriebsdetails aufnehmen. Anonymes HTTPS ist der Standard-Installationsweg. Änderungen der Repository-Sichtbarkeit nur auf ausdrücklichen Nutzerauftrag.
+
+Home Assistant ist das sechste Plugin: stabile öffentliche MCP-Adresse, Authentik-Scope `homeassistant`, persönliche HA-Tokens ausschließlich in OpenBao. Keine interne HA-Adresse oder Webhook-Geheimnisse in den Katalog aufnehmen. Die Aufnahme in beide Marketplace-Kataloge ist keine Installation in Claude Web.
