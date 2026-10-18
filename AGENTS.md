@@ -2,7 +2,7 @@
 
 Öffentlicher Plugin-Katalog `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`. Deutsch.
 
-Nur Plugin-Metadaten, MCP-Verbindungsdaten und technische Installationshinweise pflegen. Keine Secrets, Nutzdaten, Vault-Inhalte oder Serverkonfigurationen übernehmen. Repository-Zugriff und persönliche Dienstfreigabe sind unabhängig. Änderungen hier erteilen keine Freigabe für NAS-Deployments.
+Plugin-Metadaten, MCP-Verbindungsdaten, technische Installationshinweise sowie den ausdrücklich beauftragten offiziellen HA-Best-Practice-Skill pflegen. Keine Secrets, Nutzdaten, Vault-Inhalte oder Serverkonfigurationen übernehmen. Repository-Zugriff und persönliche Dienstfreigabe sind unabhängig. Änderungen hier erteilen keine Freigabe für NAS-Deployments.
 
 Claude-Katalog: `.claude-plugin/marketplace.json`; Codex-Katalog: `.agents/plugins/marketplace.json`. Gemeinsame Plugins unter `plugins/`, je Plugin Claude-/Codex-Manifest und `.mcp.json`. Namen, Versionen, Pfade und URLs konsistent halten. Keine lokale Werkzeug-Allowlist oder zusätzliche Gesprächsablage-Skills hinzufügen.
 
@@ -13,3 +13,5 @@ Prüfen: `python3 scripts/check-marketplace.py` und `claude plugin validate . --
 Öffentliche Git-Historie mitprüfen; niemals Geheimnisse oder interne Betriebsdetails aufnehmen. Anonymes HTTPS ist der Standard-Installationsweg. Änderungen der Repository-Sichtbarkeit nur auf ausdrücklichen Nutzerauftrag.
 
 Home Assistant ist das sechste Plugin: stabile öffentliche MCP-Adresse, Authentik-Scope `homeassistant`, persönliche HA-Tokens ausschließlich in OpenBao. Keine interne HA-Adresse oder Webhook-Geheimnisse in den Katalog aufnehmen. Die Aufnahme in beide Marketplace-Kataloge ist keine Installation in Claude Web.
+
+Der Nutzer hat den im Video empfohlenen offiziellen `home-assistant-best-practices`-Skill zur Bündelung im Home-Assistant-Plugin beauftragt. Original und 15 Referenzen unverändert, MIT-Lizenz erhalten; Quelle/Version/Commit/Dateihashes in `plugins/homeassistant-mcp/upstream-skill.json`. Nur geprüfte gepinnte Updates veröffentlichen, keine globalen persönlichen Client-Skills installieren. `skills/` im Plugin-Root für beide Clients; Installation und tatsächliche Skill-Erkennung getrennt prüfen. Keine zusätzlichen Ablage-Skills oder lokale Werkzeug-Allowlist daraus ableiten.

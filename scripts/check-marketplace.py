@@ -1,6 +1,7 @@
 """Offline: Katalogkonsistenz, Pfade und ausschließlich öffentliche HTTP-Konfiguration."""
 from pathlib import Path
 import json
+import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
@@ -42,4 +43,14 @@ for key, scopes in EXPECTED.items():
         "type": "http", "url": f"https://mcp.bunteban.de/{key}/mcp",
         "oauth": {"scopes": scopes},
     }}}
-print("Sechs konsistente Plugins, zwei Kataloge; nur festgelegte öffentliche HTTP-Verbindungsdaten.")
+ha = ROOT / 'plugins/homeassistant-mcp'
+origin = read('plugins/homeassistant-mcp/upstream-skill.json')
+assert origin['repository'] == 'https://github.com/homeassistant-ai/skills'
+assert origin['license'] == 'MIT' and len(origin['commit']) == 40
+actual = {str(p.relative_to(ha)): hashlib.sha256(p.read_bytes()).hexdigest()
+          for p in (ha / 'skills/home-assistant-best-practices').rglob('*') if p.is_file()}
+assert actual == origin['files'], 'Incomplete or changed upstream skill bundle'
+assert len(actual) == 17, 'Expected entrypoint, 15 references and license'
+assert (ha / 'skills/home-assistant-best-practices/SKILL.md').is_file()
+assert (ha / 'skills/home-assistant-best-practices/LICENSE').is_file()
+print("Sechs konsistente Plugins, zwei Kataloge; öffentliche HTTP-Daten und vollständiger gepinnter HA-Skill.")

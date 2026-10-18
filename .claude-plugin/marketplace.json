@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
@@ -41,8 +41,8 @@
     {
       "name": "homeassistant-mcp",
       "source": "./plugins/homeassistant-mcp",
-      "description": "Home Assistant lesen, Geräte steuern und Automationen verwalten.",
-      "version": "0.1.0"
+      "description": "Home Assistant per MCP nutzen, mit dem Best-Practice-Skill aus dem Video.",
+      "version": "0.2.0"
     }
   ]
 }

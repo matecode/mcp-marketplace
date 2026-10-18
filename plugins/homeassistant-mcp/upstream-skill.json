@@ -1,0 +1,27 @@
+{
+  "repository": "https://github.com/homeassistant-ai/skills",
+  "commit": "68f2690ff868cde35f4e755cde82a69666f89b06",
+  "version": "0.51.0",
+  "license": "MIT",
+  "source_path": "skills/home-assistant-best-practices",
+  "video": "https://www.youtube.com/watch?v=AL391nkWGIc&t=1243s",
+  "files": {
+    "skills/home-assistant-best-practices/LICENSE": "68eaf9eb28babab65015e2194e32f43ad96ca1a9539c8b6613e9822cfbd61205",
+    "skills/home-assistant-best-practices/SKILL.md": "039a62d8bb8f9433ea164a8bc83b2719f7a9be995d0d16a341977b2f6a7a6cd8",
+    "skills/home-assistant-best-practices/references/appdaemon.md": "cafd134ff6c90f7aa9bc2f56e7f02836466d33405091ac33b02ebd80c42b1eb4",
+    "skills/home-assistant-best-practices/references/automation-actions.md": "47105716f707dab3a965fb15450c575a581c5a9c028946ec6d1e60d837f5055c",
+    "skills/home-assistant-best-practices/references/backups.md": "8bd159f2cfddf91a71fe5302f6f8f1f8e8ddaa5d33a3a4ada5dfa618c925f9de",
+    "skills/home-assistant-best-practices/references/blueprint-guide.md": "72904598254cc2ae776ea5c48dbd74124e3180175403bdab855da69416990411",
+    "skills/home-assistant-best-practices/references/dashboard-cards.md": "e20deff1441456d6f5b3656f897e90bbeb0887e581a3c47d87ba26e12e85d7b5",
+    "skills/home-assistant-best-practices/references/dashboard-guide.md": "30b5147c1a8ae7b44405f7698d44a263ab9576ba46f7b455e2ce6314d3ee37c1",
+    "skills/home-assistant-best-practices/references/device-control.md": "f6e24eaf71355aa1a0c9d90bfbc5f108624ff9abc00e9497e327e069c3288f01",
+    "skills/home-assistant-best-practices/references/domain-docs.md": "8207a5b50aaeae4d510614e9cbdad6c10ef7b0028a4dc50c716a096c2c5f5d31",
+    "skills/home-assistant-best-practices/references/examples.yaml": "06dff5e876681f0ef3214cf0f8d26e9253f4eac4fbb02852b8a8aa4207481da2",
+    "skills/home-assistant-best-practices/references/helper-selection.md": "98c2bbfbbb9745ae41c64df86f625a05bda0ff35652f4d37c2a5b793e1adfff0",
+    "skills/home-assistant-best-practices/references/safe-refactoring.md": "b41e0899c5ffab82eb3ea8f759c43b2fb1364ef9fc397ea6249aa92362f9338f",
+    "skills/home-assistant-best-practices/references/scenes.md": "829d7e02f69ac7cbba8d05df19d4ae2de9dfe5c1ce085cc130d72ba0a074ab70",
+    "skills/home-assistant-best-practices/references/template-guidelines.md": "7db1e58416defb906ceaa0511e2ced525a793b3109c90f4300379cdc908eaa79",
+    "skills/home-assistant-best-practices/references/triggers-and-conditions.md": "2ec9152b4bd07c75ad8be840867ab75675e67d198800a8f4064b1c9c99a5066f",
+    "skills/home-assistant-best-practices/references/yaml-only-integrations.md": "a82d501ea342236e84bc12c3e3c8146d8b56c31c6a4d468e640c36568042ec81"
+  }
+}

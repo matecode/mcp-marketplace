@@ -1,6 +1,6 @@
 # Mate MCP Marketplace
 
-Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.2.0.
+Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.3.0.
 
 ## Plugins
 
@@ -12,6 +12,8 @@
 | `kleinanzeigen-mcp` | Kleinanzeigen | `https://mcp.bunteban.de/kleinanzeigen/mcp` |
 | `lizu-mcp` | Nextcloud | `https://mcp.bunteban.de/lizu/mcp` |
 | `homeassistant-mcp` | Home Assistant | `https://mcp.bunteban.de/homeassistant/mcp` |
+
+Das Home-Assistant-Plugin bündelt zusätzlich den im [Video ab 20:43](https://www.youtube.com/watch?v=AL391nkWGIc&t=1243s) empfohlenen `home-assistant-best-practices`-Skill samt Referenzen. [Herkunft und Updatehinweise](plugins/homeassistant-mcp/README.md#skill-aus-dem-video).
 
 Jedes Plugin lässt sich einzeln installieren. Die Pakete starten keine lokalen Server; sie verbinden die bestehenden Homelab-Dienste über Streamable HTTP.
 
