@@ -29,8 +29,12 @@ In den Einstellungen einen benutzerdefinierten Remote-Connector hinzufügen:
 
 - Name: `Fileee`
 - URL: `https://mcp.bunteban.de/fileee/mcp`
+- Authentifizierung: **Jetzt anmelden**
+- OAuth-Client: **Eigenen OAuth-Client verwenden**
 - OAuth Client ID: `fileee-mcp`
 - OAuth Client Secret: leer
+
+Fileee verwendet einen bereits registrierten öffentlichen OAuth-Client und bietet in diesem Aufbau keine dynamische Clientregistrierung (DCR). Deshalb **„Eigenen OAuth-Client verwenden“** wählen. Bei anderen MCPs mit DCR kann Claude stattdessen **„Automatisch registrieren“** verwenden. Die Anzeige „Erkannt“ ist hier erwartbar: OAuth wird erkannt, die feste Client-ID muss noch eingetragen werden. Eine leere Client-ID verhindert das Hinzufügen; das ist kein Nachweis eines fehlgeschlagenen Logins. Die Client-ID ist eine öffentliche Kennung und kein persönliches Fileee-Zugangsmittel.
 
 Den Connector verbinden und die Authentik-Anmeldung durchführen. Anschließend in der App dasselbe Claude-Konto verwenden und den Fileee-Connector im Chat aktivieren. Claude Web/App verwendet einen eigenen Anmeldevorgang; eine erfolgreiche Codex-Anmeldung ist dafür kein Funktionsnachweis. Der Server selbst wird durch die Connector-Anmeldung nicht installiert oder aktualisiert.
 
