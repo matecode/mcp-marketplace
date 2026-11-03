@@ -1,12 +1,16 @@
 # Mate MCP Marketplace
 
+## MCP-Clienteinrichtung – Nutzerentscheidung, 2026-11-03
+
+Mate richtet MCPs künftig selbst in seinen Clients ein: Plugin-/Connectorinstallation, Anmeldung und Zustimmung übernimmt er. Bei neuen MCPs Server, Marketplace-Paket und vollständige Einrichtungsanleitung liefern; keine Clientkonfiguration ändern oder OAuth-Browserlogins starten, auch nicht als automatische Clientabnahme. Offline-Paketvalidierung und serverseitige Lese-/Authentifizierungsprüfungen bleiben Teil der Umsetzung. Tatsächliche Clientnutzung/Refresh nur nach belegter Nutzerbestätigung oder einem neuen ausdrücklichen Prüfauftrag dokumentieren. Für Fileee ist Claude Web/App der gewünschte Client; Einrichtung durch Mate.
+
 Öffentlicher Plugin-Katalog `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`. Deutsch.
 
 Plugin-Metadaten, MCP-Verbindungsdaten, technische Installationshinweise sowie den ausdrücklich beauftragten offiziellen HA-Best-Practice-Skill pflegen. Keine Secrets, Nutzdaten, Vault-Inhalte oder Serverkonfigurationen übernehmen. Repository-Zugriff und persönliche Dienstfreigabe sind unabhängig. Änderungen hier erteilen keine Freigabe für NAS-Deployments.
 
 Claude-Katalog: `.claude-plugin/marketplace.json`; Codex-Katalog: `.agents/plugins/marketplace.json`. Gemeinsame Plugins unter `plugins/`, je Plugin Claude-/Codex-Manifest und `.mcp.json`. Fileee verwendet zusätzlich `mcp.codex.json` mit nativem `oauth.client_id`, `callback_port` und Scope-Liste für die geprüfte Codex-CLI-Version; Codex-Manifest darauf verweisen lassen. Namen, Versionen, Pfade, OAuth-Scopes und URLs konsistent halten. Keine lokale Werkzeug-Allowlist oder zusätzliche Gesprächsablage-Skills hinzufügen.
 
-Prüfen: `python3 scripts/check-marketplace.py` und `claude plugin validate . --strict`. Client-Laden/Installation mit isolierten temporären Konfigurationsverzeichnissen prüfen, ohne persönliche Clientkonfiguration zu verändern. OAuth, Werkzeugfunktion und Refresh getrennt von Paketprüfungen dokumentieren. Keine Schreibproben an Mail, Kalender, Anzeigen oder Vault ohne konkreten Auftrag.
+Prüfen: `python3 scripts/check-marketplace.py` und `claude plugin validate . --strict`. Clientinstallation und OAuth-Anmeldung übernimmt Mate; weitergehende Clienttests nur auf neuen ausdrücklichen Auftrag und mit isolierten temporären Konfigurationsverzeichnissen. OAuth, Werkzeugfunktion und Refresh getrennt von Paketprüfungen dokumentieren. Keine Schreibproben an Mail, Kalender, Anzeigen oder Vault ohne konkreten Auftrag.
 
 Übergreifendes Betriebswissen im Homelab-Vault; Infrastrukturquellen in `matecode/homelab-infra`.
 
