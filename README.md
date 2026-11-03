@@ -1,6 +1,6 @@
 # Mate MCP Marketplace
 
-Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.4.0.
+Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.4.1.
 
 ## Plugins
 
@@ -81,13 +81,13 @@ Installation allein bestätigt weder OAuth-Login noch Werkzeugfunktion, Refresh 
 
 Claude Code verwendet `.claude-plugin/marketplace.json` mit `owner`, optionalen `metadata` und einem Plugin-Pfad als `source`-String. Der native Codex-Katalog unter `.agents/plugins/marketplace.json` verwendet hier ein `source`-Objekt sowie `interface.displayName`, `category` und `policy` für Installations-/Anmeldeverhalten.
 
-Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben sieben Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit dem dokumentierten `com.openai.auth`-Format. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
+Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben sieben Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit `oauth.client_id`, Callbackport und Scope-Liste für die geprüfte CLI-Version. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
 
-## Fileee 0.1.0 – Paketprüfung, 2026-11-03
+## Fileee 0.1.1 – Paket- und Dienstprüfung, 2026-11-03
 
-Siebtes Plugin, native Authentik-Anmeldung mit öffentlicher Client-ID `fileee-mcp`, ohne Clientsecret oder DCR. Offline-Katalogprüfung bestanden. Codex CLI 0.163.0-alpha.10.2 installiert Fileee in isolierter Konfiguration und lädt die korrekte Streamable-HTTP-Adresse. Claude Code 2.1.285 validiert Katalog/Plugin streng und lädt isoliert die HTTP-Verbindung einschließlich Client-ID, Scopes und Callbackport. Keine persönlichen Clienteinstellungen verändert.
+Siebtes Plugin, native Authentik-Anmeldung mit öffentlicher Client-ID `fileee-mcp`, ohne Clientsecret oder DCR. Offline-Katalogprüfung bestanden. Codex CLI 0.163.0-alpha.10.2 übernimmt im ursprünglichen Paket 0.1.0 die portable Client-ID nicht und versucht DCR. Paket 0.1.1 verwendet das native `oauth`-Feld: isoliert neu installiert, korrekter PKCE-Login mit bereitgestellter Client-ID gestartet. Claude Code 2.1.285 validiert Katalog/Plugin streng und lädt isoliert die HTTP-Verbindung einschließlich Client-ID, Scopes und Callbackport. Keine persönlichen Clienteinstellungen verändert.
 
-Der Dienst wird eingerichtet: persönliche Kontoeingabe, öffentliche Aktivierung, echter Werkzeugkatalog und Fileee-Leseprobe sowie Login/Refresh in allen gewünschten Clients stehen noch aus. [Einrichtung und Grenzen](plugins/fileee-mcp/README.md).
+Der Dienst ist öffentlich aktiv; tatsächliche 44 Werkzeuge und persönliche Fileee-Leseprobe erfolgreich geprüft. Browserabschluss, gespeicherte Clientnachweise, Werkzeugfunktion und Refresh in den gewünschten Clients werden gesondert geprüft. [Einrichtung und Grenzen](plugins/fileee-mcp/README.md).
 
 ## Pflege und Prüfung
 

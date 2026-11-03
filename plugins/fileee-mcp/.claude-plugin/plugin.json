@@ -1,8 +1,10 @@
 {
   "name": "fileee-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fileee-Dokumente mit persönlicher Kontozuordnung nutzen.",
-  "author": {"name": "matecode"},
+  "author": {
+    "name": "matecode"
+  },
   "homepage": "https://github.com/matecode/mcp-marketplace",
   "repository": "https://github.com/matecode/mcp-marketplace"
 }

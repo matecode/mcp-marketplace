@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.4.0"
+    "version": "0.4.1"
   },
   "plugins": [
     {
@@ -48,7 +48,7 @@
       "name": "fileee-mcp",
       "source": "./plugins/fileee-mcp",
       "description": "Fileee-Dokumente mit persönlicher Kontozuordnung nutzen.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }

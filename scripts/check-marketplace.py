@@ -48,13 +48,9 @@ for key, scopes in EXPECTED.items():
     assert read(relative + "/.mcp.json") == {"mcpServers": {key: connection}}
     if key == "fileee":
         assert read(relative + "/mcp.codex.json") == {
-            "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
             "mcpServers": {"fileee": {
-                "type": "streamable-http", "url": connection["url"],
-                "extensions": {"com.openai": {"auth": {
-                    "type": "oauth", "client": {"mode": "provided", "clientId": "fileee-mcp",
-                        "tokenEndpointAuthMethod": "none"}, "baseScopes": scopes.split(),
-                }}},
+                "type": "http", "url": connection["url"],
+                "oauth": {"client_id": "fileee-mcp", "callback_port": 8766, "scopes": scopes.split()},
             }},
         }
 ha = ROOT / 'plugins/homeassistant-mcp'

@@ -4,9 +4,9 @@ Persönliche Fileee-Dokumente über `https://mcp.bunteban.de/fileee/mcp` nutzen.
 
 ## Anmeldung
 
-Der Server verwendet die native OAuth-Anbindung des Fileee-Projekts. Der registrierte öffentliche Client heißt `fileee-mcp`; ein Client-Secret wird nicht benötigt. OAuth-Nachweise gehören in den jeweiligen Client-Schlüsselbund.
+Der Server verwendet die native OAuth-Anbindung des Fileee-Projekts. Der registrierte öffentliche Client heißt `fileee-mcp`; ein Client-Secret wird nicht benötigt. OAuth-Nachweise gehören in den geschützten Anmeldespeicher des jeweiligen Clients.
 
-Codex verwendet `mcp.codex.json` mit dem dokumentierten `com.openai`-OAuth-Format. Claude Code verwendet `.mcp.json` mit `oauth.clientId`. Beide melden sich unabhängig an und erhalten denselben persönlichen Werkzeugzugang. Für die Installation die bestehende [Marketplace-Anleitung](../../README.md) verwenden.
+Codex verwendet ab Paket 0.1.1 `mcp.codex.json` mit `oauth.client_id`, `callback_port: 8766` und einer Scope-Liste. Dieses Format ist mit Codex CLI 0.163.0-alpha.10.2 geprüft; die portable Client-ID aus Paket 0.1.0 wurde dort nicht übernommen und führte zu „Dynamic client registration not supported“. Claude Code verwendet `.mcp.json` mit `oauth.clientId`, Callbackport 8767 und Scopes als Zeichenkette. Beide melden sich unabhängig an. Für die Installation die bestehende [Marketplace-Anleitung](../../README.md) verwenden.
 
 Für eine direkte Einrichtung ohne Plugin:
 
@@ -38,6 +38,6 @@ Upstream 0.9.4 beschreibt 44 Werkzeuge: 32 lesende, 8 schreibende und 4 Betriebs
 
 Der vollständige Katalog wird angeboten; ToolAnnotations beschreiben Lese-/Schreibverhalten. Zustimmung zu Änderungen wird im Client verwaltet und nicht durch diese Hinweise technisch erzwungen. Zugangsdaten- und Kontozuordnungsänderungen übernimmt der Betreiber bei einem gezielten Fileee-Dienstneustart.
 
-Stand 2026-11-03: Offline-Katalogprüfung und strenge Claude-Validierung bestanden. Fileee-Paket in isoliertem Codex CLI 0.163.0-alpha.10.2 und Claude Code 2.1.285 installiert; beide erkennen die vorgesehene Verbindung, Claude einschließlich öffentlicher Client-ID und Scopes. Keine persönlichen Clienteinstellungen verändert. Dienstaktivierung und persönliche Kontoeinrichtung sowie tatsächlicher Werkzeugkatalog, Fileee-Leseprobe und OAuth/Refresh in allen gewünschten Clients stehen noch aus.
+Stand 2026-11-03: Dienst öffentlich aktiv, tatsächlicher Katalog mit 44 Werkzeugen und persönliche Fileee-Leseprobe erfolgreich geprüft. Paket 0.1.1 in isoliertem Codex CLI 0.163.0-alpha.10.2 geladen; korrekter PKCE-Login mit Client-ID gestartet. Claude Code 2.1.285 lädt die HTTP-Verbindung einschließlich Client-ID/Scopes und startet den eigenen Login mit TTY. Keine persönlichen Clienteinstellungen verändert. Browserabschluss, Werkzeugfunktion mit gespeicherten Clientnachweisen und OAuth-Refresh je Client einschließlich Claude Web/App sind noch offen.
 
 Quellen: [Fileee-Projekt](https://github.com/strausmann/fileee-mcp-server), [Authentik-Anleitung](https://github.com/strausmann/fileee-mcp-server/blob/v0.9.4/docs/idp/authentik.md), [Codex-Plugins](https://developers.openai.com/codex/plugins/build), [Claude-Code-MCP](https://code.claude.com/docs/en/mcp).
