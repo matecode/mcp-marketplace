@@ -87,7 +87,7 @@ Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien s
 
 Siebtes Plugin, native Authentik-Anmeldung mit öffentlicher Client-ID `fileee-mcp`, ohne Clientsecret oder DCR. Offline-Katalogprüfung bestanden. Codex CLI 0.163.0-alpha.10.2 übernimmt im ursprünglichen Paket 0.1.0 die portable Client-ID nicht und versucht DCR. Paket 0.1.1 verwendet das native `oauth`-Feld: isoliert neu installiert, korrekter PKCE-Login mit bereitgestellter Client-ID gestartet. Claude Code 2.1.285 validiert Katalog/Plugin streng und lädt isoliert die HTTP-Verbindung einschließlich Client-ID, Scopes und Callbackport. Keine persönlichen Clienteinstellungen verändert.
 
-Der Dienst ist öffentlich aktiv; tatsächliche 44 Werkzeuge und persönliche Fileee-Leseprobe erfolgreich geprüft. Browserabschluss, gespeicherte Clientnachweise, Werkzeugfunktion und Refresh in den gewünschten Clients werden gesondert geprüft. [Einrichtung und Grenzen](plugins/fileee-mcp/README.md).
+Der Dienst ist öffentlich aktiv; tatsächliche 44 Werkzeuge und persönliche Fileee-Leseprobe erfolgreich geprüft. Beide isolierten Testlogins erreichten vor Browserabschluss ihr Zeitlimit. Abgeschlossene Anmeldung, Werkzeugfunktion mit gespeicherten Clientnachweisen und Refresh in den gewünschten Clients sind noch offen. [Einrichtung und Grenzen](plugins/fileee-mcp/README.md).
 
 ## Pflege und Prüfung
 
