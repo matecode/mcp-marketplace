@@ -4,11 +4,13 @@
 
 Plugin-Metadaten, MCP-Verbindungsdaten, technische Installationshinweise sowie den ausdrücklich beauftragten offiziellen HA-Best-Practice-Skill pflegen. Keine Secrets, Nutzdaten, Vault-Inhalte oder Serverkonfigurationen übernehmen. Repository-Zugriff und persönliche Dienstfreigabe sind unabhängig. Änderungen hier erteilen keine Freigabe für NAS-Deployments.
 
-Claude-Katalog: `.claude-plugin/marketplace.json`; Codex-Katalog: `.agents/plugins/marketplace.json`. Gemeinsame Plugins unter `plugins/`, je Plugin Claude-/Codex-Manifest und `.mcp.json`. Namen, Versionen, Pfade und URLs konsistent halten. Keine lokale Werkzeug-Allowlist oder zusätzliche Gesprächsablage-Skills hinzufügen.
+Claude-Katalog: `.claude-plugin/marketplace.json`; Codex-Katalog: `.agents/plugins/marketplace.json`. Gemeinsame Plugins unter `plugins/`, je Plugin Claude-/Codex-Manifest und `.mcp.json`. Fileee verwendet zusätzlich `mcp.codex.json` für das dokumentierte native `com.openai.auth`-Format mit bereitgestellter öffentlicher Client-ID; Codex-Manifest darauf verweisen lassen. Namen, Versionen, Pfade, OAuth-Scopes und URLs konsistent halten. Keine lokale Werkzeug-Allowlist oder zusätzliche Gesprächsablage-Skills hinzufügen.
 
 Prüfen: `python3 scripts/check-marketplace.py` und `claude plugin validate . --strict`. Client-Laden/Installation mit isolierten temporären Konfigurationsverzeichnissen prüfen, ohne persönliche Clientkonfiguration zu verändern. OAuth, Werkzeugfunktion und Refresh getrennt von Paketprüfungen dokumentieren. Keine Schreibproben an Mail, Kalender, Anzeigen oder Vault ohne konkreten Auftrag.
 
 Übergreifendes Betriebswissen im Homelab-Vault; Infrastrukturquellen in `matecode/homelab-infra`.
+
+Fileee ist das siebte Plugin. Native Authentik-Anbindung mit öffentlicher Client-ID `fileee-mcp`, PKCE und ohne Clientsecret; keine DCR. Claude Code `oauth.clientId`, Codex bereitgestellte Client-ID unter `extensions.com.openai.auth.client`. Scopes `openid profile email offline_access fileee`. Eigene dienstseitige Konto-/Freigabezuordnung nötig; keine Zugangsdaten oder internen Secretnavigationslinks im öffentlichen Paket. Claude Web/App wird über den Remote-Connector gesondert eingerichtet. Paketvalidierung, echter Clientlogin, Fileee-Funktion und Refresh getrennt dokumentieren.
 
 Öffentliche Git-Historie mitprüfen; niemals Geheimnisse oder interne Betriebsdetails aufnehmen. Anonymes HTTPS ist der Standard-Installationsweg. Änderungen der Repository-Sichtbarkeit nur auf ausdrücklichen Nutzerauftrag.
 

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "fileee": {
+      "type": "http",
+      "url": "https://mcp.bunteban.de/fileee/mcp",
+      "oauth": {
+        "clientId": "fileee-mcp",
+        "callbackPort": 8767,
+        "scopes": "openid profile email offline_access fileee"
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.3.0"
+    "version": "0.4.0"
   },
   "plugins": [
     {
@@ -43,6 +43,12 @@
       "source": "./plugins/homeassistant-mcp",
       "description": "Home Assistant per MCP nutzen, mit dem Best-Practice-Skill aus dem Video.",
       "version": "0.3.0"
+    },
+    {
+      "name": "fileee-mcp",
+      "source": "./plugins/fileee-mcp",
+      "description": "Fileee-Dokumente mit persönlicher Kontozuordnung nutzen.",
+      "version": "0.1.0"
     }
   ]
 }

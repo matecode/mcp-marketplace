@@ -11,6 +11,7 @@ EXPECTED = {
     "kleinanzeigen": "openid profile email offline_access",
     "lizu": "openid profile email offline_access lizu",
     "homeassistant": None,
+    "fileee": "openid profile email offline_access fileee",
 }
 
 def read(path):
@@ -38,11 +39,24 @@ for key, scopes in EXPECTED.items():
     om = read(relative + "/.codex-plugin/plugin.json")
     assert cm["name"] == om["name"] == name
     assert cm["version"] == om["version"] == ce["version"]
-    assert om["mcpServers"] == "./.mcp.json"
+    assert om["mcpServers"] == ("./mcp.codex.json" if key == "fileee" else "./.mcp.json")
     connection = {"type": "http", "url": f"https://mcp.bunteban.de/{key}/mcp"}
     if scopes is not None:
         connection["oauth"] = {"scopes": scopes}
+    if key == "fileee":
+        connection["oauth"].update(clientId="fileee-mcp", callbackPort=8767)
     assert read(relative + "/.mcp.json") == {"mcpServers": {key: connection}}
+    if key == "fileee":
+        assert read(relative + "/mcp.codex.json") == {
+            "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+            "mcpServers": {"fileee": {
+                "type": "streamable-http", "url": connection["url"],
+                "extensions": {"com.openai": {"auth": {
+                    "type": "oauth", "client": {"mode": "provided", "clientId": "fileee-mcp",
+                        "tokenEndpointAuthMethod": "none"}, "baseScopes": scopes.split(),
+                }}},
+            }},
+        }
 ha = ROOT / 'plugins/homeassistant-mcp'
 origin = read('plugins/homeassistant-mcp/upstream-skill.json')
 assert origin['repository'] == 'https://github.com/homeassistant-ai/skills'
@@ -53,4 +67,4 @@ assert actual == origin['files'], 'Incomplete or changed upstream skill bundle'
 assert len(actual) == 17, 'Expected entrypoint, 15 references and license'
 assert (ha / 'skills/home-assistant-best-practices/SKILL.md').is_file()
 assert (ha / 'skills/home-assistant-best-practices/LICENSE').is_file()
-print("Sechs konsistente Plugins, zwei Kataloge; öffentliche HTTP-Daten und vollständiger gepinnter HA-Skill.")
+print("Sieben konsistente Plugins, zwei Kataloge; öffentliche HTTP/OAuth-Daten und vollständiger gepinnter HA-Skill.")

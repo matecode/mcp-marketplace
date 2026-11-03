@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "fileee": {
+      "type": "streamable-http",
+      "url": "https://mcp.bunteban.de/fileee/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "provided",
+              "clientId": "fileee-mcp",
+              "tokenEndpointAuthMethod": "none"
+            },
+            "baseScopes": ["openid", "profile", "email", "offline_access", "fileee"]
+          }
+        }
+      }
+    }
+  }
+}

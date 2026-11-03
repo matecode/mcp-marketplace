@@ -1,6 +1,6 @@
 # Mate MCP Marketplace
 
-Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.3.0.
+Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.4.0.
 
 ## Plugins
 
@@ -12,6 +12,7 @@
 | `kleinanzeigen-mcp` | Kleinanzeigen | `https://mcp.bunteban.de/kleinanzeigen/mcp` |
 | `lizu-mcp` | Nextcloud | `https://mcp.bunteban.de/lizu/mcp` |
 | `homeassistant-mcp` | Home Assistant | `https://mcp.bunteban.de/homeassistant/mcp` |
+| `fileee-mcp` | Persönliches Fileee-Archiv | `https://mcp.bunteban.de/fileee/mcp` |
 
 Das Home-Assistant-Plugin bündelt zusätzlich den im [Video ab 20:43](https://www.youtube.com/watch?v=AL391nkWGIc&t=1243s) empfohlenen `home-assistant-best-practices`-Skill samt Referenzen. [Herkunft und Updatehinweise](plugins/homeassistant-mcp/README.md#skill-aus-dem-video).
 
@@ -21,7 +22,7 @@ Jedes Plugin lässt sich einzeln installieren. Die Pakete starten keine lokalen 
 
 Der öffentliche Katalog kann über HTTPS ohne GitHub-Konto oder Git-Zugangsdaten geladen werden. Für diesen Weg die vollständige HTTPS-Repository-Adresse verwenden. Bei optionalem SSH-Zugang muss der Schlüssel bereits nutzbar und der GitHub-Hostschlüssel bekannt sein; Hostschlüsselprüfung nicht abschalten. Keine Tokens in Remote-URLs oder Manifesten eintragen.
 
-GitHub-Zugriff und MCP-Zugriff sind unabhängig. Home Assistant verwendet ab Plugin 0.3.0 die eigene HA-Anmeldung unter `https://ha.bunteban.de`; OAuth-Felder und zusätzliche Scopes leer lassen. Werkzeugrechte folgen dem Zugang der HA-Server-App. Die anderen Dienste verwenden Authentik und ihre jeweilige Freigabe; Mail/Kalender und LiZu brauchen persönliche Kontoeinträge in OpenBao. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung.
+GitHub-Zugriff und MCP-Zugriff sind unabhängig. Home Assistant verwendet ab Plugin 0.3.0 die eigene HA-Anmeldung unter `https://ha.bunteban.de`; OAuth-Felder und zusätzliche Scopes leer lassen. Werkzeugrechte folgen dem Zugang der HA-Server-App. Die anderen Dienste verwenden Authentik und ihre jeweilige Freigabe; Mail/Kalender, LiZu und Fileee brauchen persönliche Kontoeinträge in OpenBao. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung. [Fileee](plugins/fileee-mcp/README.md) nutzt native OAuth-Anmeldung mit öffentlicher Client-ID `fileee-mcp` ohne Clientsecret; Dienstaktivierung und Clientabnahme sind dort separat dokumentiert.
 
 ## Claude Code
 
@@ -63,6 +64,7 @@ codex mcp login lizu --scopes openid,profile,email,offline_access,lizu
 codex mcp login obsidian --scopes openid,profile,email,offline_access
 codex mcp login kleinanzeigen --scopes openid,profile,email,offline_access
 codex mcp login homeassistant --oauth-client-registration dcr
+codex mcp login fileee --scopes openid,profile,email,offline_access,fileee
 ```
 
 Bei schon separat eingerichteten MCPs zuerst bestehende Einträge prüfen, um doppelte Verbindungen und Namenskollisionen zu vermeiden. Keine bestehende Clientkonfiguration blind überschreiben.
@@ -79,7 +81,13 @@ Installation allein bestätigt weder OAuth-Login noch Werkzeugfunktion, Refresh 
 
 Claude Code verwendet `.claude-plugin/marketplace.json` mit `owner`, optionalen `metadata` und einem Plugin-Pfad als `source`-String. Der native Codex-Katalog unter `.agents/plugins/marketplace.json` verwendet hier ein `source`-Objekt sowie `interface.displayName`, `category` und `policy` für Installations-/Anmeldeverhalten.
 
-Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben sechs Plugin-Verzeichnisse; die MCP-Adressen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert die Übereinstimmung von Plugin-Namen und Pfaden sowie die vorgesehenen Policies.
+Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben sieben Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit dem dokumentierten `com.openai.auth`-Format. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
+
+## Fileee 0.1.0 – Paketprüfung, 2026-11-03
+
+Siebtes Plugin, native Authentik-Anmeldung mit öffentlicher Client-ID `fileee-mcp`, ohne Clientsecret oder DCR. Offline-Katalogprüfung bestanden. Codex CLI 0.163.0-alpha.10.2 installiert Fileee in isolierter Konfiguration und lädt die korrekte Streamable-HTTP-Adresse. Claude Code 2.1.285 validiert Katalog/Plugin streng und lädt isoliert die HTTP-Verbindung einschließlich Client-ID, Scopes und Callbackport. Keine persönlichen Clienteinstellungen verändert.
+
+Der Dienst wird eingerichtet: persönliche Kontoeingabe, öffentliche Aktivierung, echter Werkzeugkatalog und Fileee-Leseprobe sowie Login/Refresh in allen gewünschten Clients stehen noch aus. [Einrichtung und Grenzen](plugins/fileee-mcp/README.md).
 
 ## Pflege und Prüfung
 
