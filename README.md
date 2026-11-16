@@ -148,4 +148,4 @@ Sechstes Plugin `homeassistant-mcp`, stabile HTTPS-Adresse und Scopes einschlie�
 
 ## Shazam 0.1.0
 
-[Einrichtung und Import](plugins/shazam-mcp/README.md): E-Mail-Zugang einmal persönlich bestätigen, Shazam-Export anfordern und erhaltene Datei importieren. Der Server liest den importierten Stand und verwaltet lokale Angaben. Tatsächliche Shazam-Anmeldung, Exportzustellung und Vollständigkeit benötigen die persönliche Abnahme; keine Echtzeitsynchronisierung oder native Shazam-Löschung zugesagt.
+[Einrichtung und Import](plugins/shazam-mcp/README.md): E-Mail-Zugang über einen Bestätigungslink der offiziellen Shazam-Webseite im geschützten MCP-Formular einmal persönlich bestätigen, Shazam-Export anfordern und erhaltene Datei importieren. Bereits erhaltene Web-E-Mails können direkt verwendet werden. Der Server liest den importierten Stand und verwaltet lokale Angaben. Tatsächliche Shazam-Anmeldung, Exportzustellung und Vollständigkeit benötigen die persönliche Abnahme; keine Echtzeitsynchronisierung oder native Shazam-Löschung zugesagt.

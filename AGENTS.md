@@ -1,5 +1,11 @@
 # Mate MCP Marketplace
 
+Shazam-Einrichtung: offizielle Web-E-Mail persönlich anfordern oder vorhandene
+verwenden; originales ungeöffnetes Linkziel und dieselbe Konto-E-Mail nur im
+geschützten MCP-Bestätigungsformular eingeben. Keine vorausgehende
+MCP-Mailanforderung nötig. Persönliche Tokenablage, Export und Titelabgleich
+weiterhin getrennt von Paket-/Serverprüfungen bestätigen.
+
 ## MCP-Clienteinrichtung – Nutzerentscheidung, 2026-11-03
 
 Mate richtet MCPs künftig selbst in seinen Clients ein: Plugin-/Connectorinstallation, Anmeldung und Zustimmung übernimmt er. Bei neuen MCPs Server, Marketplace-Paket und vollständige Einrichtungsanleitung liefern; keine Clientkonfiguration ändern oder OAuth-Browserlogins starten, auch nicht als automatische Clientabnahme. Offline-Paketvalidierung und serverseitige Lese-/Authentifizierungsprüfungen bleiben Teil der Umsetzung. Tatsächliche Clientnutzung/Refresh nur nach belegter Nutzerbestätigung oder einem neuen ausdrücklichen Prüfauftrag dokumentieren. Für Fileee ist Claude Web/App der gewünschte Client; Einrichtung durch Mate.
