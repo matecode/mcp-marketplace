@@ -1,0 +1,8 @@
+{
+  "name": "shazam-export",
+  "version": "0.1.0",
+  "description": "Shazam-Mediathek vom Android-Gerät als CSV und JSON exportieren.",
+  "author": {"name": "matecode"},
+  "homepage": "https://github.com/matecode/mcp-marketplace",
+  "repository": "https://github.com/matecode/mcp-marketplace"
+}

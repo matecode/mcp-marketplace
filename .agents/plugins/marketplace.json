@@ -99,6 +99,17 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "shazam-export",
+      "source": {
+        "source": "local",
+        "path": "./plugins/shazam-export"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }

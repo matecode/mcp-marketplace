@@ -4,8 +4,8 @@
     "name": "matecode"
   },
   "metadata": {
-    "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.6.1"
+    "description": "Homelab-MCPs und lokale Skills für Claude Code und Codex",
+    "version": "0.7.0"
   },
   "plugins": [
     {
@@ -54,6 +54,12 @@
       "name": "bandcamp-mcp",
       "source": "./plugins/bandcamp-mcp",
       "description": "Bandcamp nach Künstlern, Alben und Tracks durchsuchen und vollständige Weblinks erhalten.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "shazam-export",
+      "source": "./plugins/shazam-export",
+      "description": "Shazam-Mediathek vom Android-Gerät als CSV und JSON exportieren.",
       "version": "0.1.0"
     }
   ]

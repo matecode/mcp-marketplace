@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shazam exportieren"
+  short_description: "Shazam-Titel vom Android-Gerät als CSV und JSON exportieren"
+  default_prompt: "Nutze $shazam-export, um meine Shazam-Mediathek vom Android-Gerät zu exportieren."
