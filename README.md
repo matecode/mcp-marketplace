@@ -1,6 +1,6 @@
 # Mate MCP Marketplace
 
-Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.6.0.
+Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.6.1.
 
 ## Plugins
 
@@ -13,7 +13,6 @@
 | `lizu-mcp` | Nextcloud | `https://mcp.bunteban.de/lizu/mcp` |
 | `homeassistant-mcp` | Home Assistant | `https://mcp.bunteban.de/homeassistant/mcp` |
 | `fileee-mcp` | Persönliches Fileee-Archiv | `https://mcp.bunteban.de/fileee/mcp` |
-| `shazam-mcp` | Importierte Shazam-Mediathek | `https://mcp.bunteban.de/shazam/mcp` |
 | `bandcamp-mcp` | Bandcamp-Suche und Weblinks | `https://mcp.bunteban.de/bandcamp/mcp` |
 
 Das Home-Assistant-Plugin bündelt zusätzlich den im [Video ab 20:43](https://www.youtube.com/watch?v=AL391nkWGIc&t=1243s) empfohlenen `home-assistant-best-practices`-Skill samt Referenzen. [Herkunft und Updatehinweise](plugins/homeassistant-mcp/README.md#skill-aus-dem-video).
@@ -71,7 +70,6 @@ codex mcp login obsidian --scopes openid,profile,email,offline_access
 codex mcp login kleinanzeigen --scopes openid,profile,email,offline_access
 codex mcp login homeassistant --oauth-client-registration dcr
 codex mcp login fileee --scopes openid,profile,email,offline_access,fileee
-codex mcp login shazam --scopes openid,profile,email,offline_access,shazam
 codex mcp login bandcamp --scopes openid,profile,email,offline_access,bandcamp
 ```
 
@@ -89,7 +87,7 @@ Installation allein bestätigt weder OAuth-Login noch Werkzeugfunktion, Refresh 
 
 Claude Code verwendet `.claude-plugin/marketplace.json` mit `owner`, optionalen `metadata` und einem Plugin-Pfad als `source`-String. Der native Codex-Katalog unter `.agents/plugins/marketplace.json` verwendet hier ein `source`-Objekt sowie `interface.displayName`, `category` und `policy` für Installations-/Anmeldeverhalten.
 
-Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben neun Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit `oauth.client_id`, Callbackport und Scope-Liste für die geprüfte CLI-Version. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
+Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben acht Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit `oauth.client_id`, Callbackport und Scope-Liste für die geprüfte CLI-Version. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
 
 ## Fileee 0.1.1 – Paket- und Dienstprüfung, 2026-11-03
 
@@ -148,9 +146,9 @@ Stabile MCP-Adresse auf Original-HA-MCP 8.7.0 und Webhook-Proxy mit HA-OAuth umg
 
 Sechstes Plugin `homeassistant-mcp`, stabile HTTPS-Adresse und Scopes einschließlich `homeassistant`. Offline-Konsistenzprüfung sowie strenge Claude-Paketvalidierung bestanden; Home-Assistant-Paket in isolierten Codex-/Claude-Code-Konfigurationen geladen. Dies ist keine Installation in Claude Web. Persönliche Authentik-Anmeldung, eigener HA-Token in OpenBao und tatsächliche HA-Werkzeugfunktion sind getrennte Voraussetzungen. Gateway-Rollout am selben Tag geprüft: MCP anonym 401, OAuth-Metadaten 200 mit korrekter Adresse und Authentik-Scopes. Codex-Verbindung über Authentik lädt 78 Werkzeuge. Persönlicher HA-Aufruf/Tokenpflege und tatsächlicher Refresh aus dem Marketplace-Plugin sind davon unabhängig.
 
-## Shazam 0.1.0
+## Entfernt: Shazam MCP – 16.11.2026
 
-[Einrichtung und Import](plugins/shazam-mcp/README.md): E-Mail-Zugang über einen Bestätigungslink der offiziellen Shazam-Webseite im geschützten MCP-Formular einmal persönlich bestätigen, Shazam-Export anfordern und erhaltene Datei importieren. Bereits erhaltene Web-E-Mails können direkt verwendet werden. Der Server liest den importierten Stand und verwaltet lokale Angaben. Tatsächliche Shazam-Anmeldung, Exportzustellung und Vollständigkeit benötigen die persönliche Abnahme; keine Echtzeitsynchronisierung oder native Shazam-Löschung zugesagt.
+Auf Nutzerauftrag aus beiden Katalogen entfernt und der Remote-Dienst zurückgebaut. Bereits installierte Shazam-Plugins im jeweiligen Client entfernen. Der lokale Mobile MCP für einen Android-Export gehört nicht zu diesem Marketplace.
 
 ## Bandcamp 0.1.0
 
