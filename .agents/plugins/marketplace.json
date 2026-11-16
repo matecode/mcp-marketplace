@@ -89,18 +89,6 @@
       "category": "Productivity"
     },
     {
-      "name": "shazam-mcp",
-      "source": {
-        "source": "local",
-        "path": "./plugins/shazam-mcp"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
-    },
-    {
       "name": "bandcamp-mcp",
       "source": {
         "source": "local",

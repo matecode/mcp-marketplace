@@ -1,16 +1,15 @@
 # Mate MCP Marketplace
 
-Bandcamp ist das neunte Plugin, Version 0.1.0: eigenständiger Dienst für Suche
+Bandcamp ist nach dem Shazam-Rückbau das achte Plugin, Version 0.1.0: eigenständiger Dienst für Suche
 und Weblinks, keine eingebaute Verknüpfung mit anderen MCPs. Authentik mit
 `openid profile email offline_access bandcamp`, dynamische MCP-Registrierung.
 Nur öffentliche Verbindungsdaten und Anleitung; serverseitigen Suchnachweis
 von persönlicher Clientanmeldung trennen. Bot-Prüfung ist keine leere Suche.
 
-Shazam-Einrichtung: offizielle Web-E-Mail persönlich anfordern oder vorhandene
-verwenden; originales ungeöffnetes Linkziel und dieselbe Konto-E-Mail nur im
-geschützten MCP-Bestätigungsformular eingeben. Keine vorausgehende
-MCP-Mailanforderung nötig. Persönliche Tokenablage, Export und Titelabgleich
-weiterhin getrennt von Paket-/Serverprüfungen bestätigen.
+Shazam-MCP auf Nutzerauftrag vom 16.11.2026 zurückgebaut und aus beiden Katalogen
+entfernt. Keine Setup-/Installationsanleitung dafür reaktivieren; historische
+Quellen liegen im Infrastruktur-Repository. Mobile MCP ist ein unabhängig
+lokal eingerichtetes Werkzeug für den persönlichen Android-Export.
 
 ## MCP-Clienteinrichtung – Nutzerentscheidung, 2026-11-03
 

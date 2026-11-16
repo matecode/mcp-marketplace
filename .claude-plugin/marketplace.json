@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.6.0"
+    "version": "0.6.1"
   },
   "plugins": [
     {
@@ -49,12 +49,6 @@
       "source": "./plugins/fileee-mcp",
       "description": "Fileee-Dokumente mit persönlicher Kontozuordnung nutzen.",
       "version": "0.1.1"
-    },
-    {
-      "name": "shazam-mcp",
-      "source": "./plugins/shazam-mcp",
-      "description": "Importierte Shazam-Titel lesen, Exporte anfordern und den Bestand lokal verwalten.",
-      "version": "0.1.0"
     },
     {
       "name": "bandcamp-mcp",
