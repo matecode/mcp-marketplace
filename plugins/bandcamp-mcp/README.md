@@ -64,7 +64,8 @@ eine eventuell verlangte Browserprüfung bleibt dort nötig.
 ## Grenzen
 
 Bandcamp bietet hierfür keine öffentliche versionierte Katalog-API. Der Dienst
-nutzt die interne Suchschnittstelle und öffentlich abrufbare Detailseiten über
+ruft die interne Such-JSON-API mit Python-urllib ab. Auswertung und öffentlich
+abrufbare Detailseiten stammen aus
 [bandcamp-mcp 0.1.2](https://github.com/Venut-Technologies/bandcamp-mcp).
 Bandcamps Bot-Prüfung kann Suche oder Details jederzeit einschränken.
 Es werden keine Prüfungen umgangen. Eigene Künstlerdomains werden nicht
@@ -73,3 +74,12 @@ Slugs abgeleitet und niemals aus Künstler- oder Titelnamen erfunden.
 
 Keine Käufe, Audiodownloads oder Kontoverwaltung. Suchtexte und Ergebnisse werden
 vom MCP nicht dauerhaft gespeichert. Bandcamp erhält die Suchanfrage.
+
+## Serverprüfung – 16.11.2026
+
+Serverversion 0.1.1 auf der Synology aktiv. Öffentliche authentifizierte MCP-
+Initialisierung, fünf Werkzeuge, Zugriffsschutz und echte Suche mit fünf
+vollständigen Tracklinks geprüft; 37 isolierte Tests bestanden. Die getestete
+Trackdetailseite meldete `format_changed`, ihr direkter Weblink blieb verfügbar.
+Einzelne Detailabrufe sind daher eingeschränkt. Persönliche Clientinstallation,
+Anmeldung und natürlicher Langzeit-Refresh bleiben durch den Nutzer zu bestätigen.
