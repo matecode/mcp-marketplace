@@ -1,5 +1,11 @@
 # Mate MCP Marketplace
 
+Bandcamp ist das neunte Plugin, Version 0.1.0: eigenständiger Dienst für Suche
+und Weblinks, keine eingebaute Verknüpfung mit anderen MCPs. Authentik mit
+`openid profile email offline_access bandcamp`, dynamische MCP-Registrierung.
+Nur öffentliche Verbindungsdaten und Anleitung; serverseitigen Suchnachweis
+von persönlicher Clientanmeldung trennen. Bot-Prüfung ist keine leere Suche.
+
 Shazam-Einrichtung: offizielle Web-E-Mail persönlich anfordern oder vorhandene
 verwenden; originales ungeöffnetes Linkziel und dieselbe Konto-E-Mail nur im
 geschützten MCP-Bestätigungsformular eingeben. Keine vorausgehende

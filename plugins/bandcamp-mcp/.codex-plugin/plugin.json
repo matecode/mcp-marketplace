@@ -1,0 +1,20 @@
+{
+  "name": "bandcamp-mcp",
+  "version": "0.1.0",
+  "description": "Bandcamp nach Künstlern, Alben und Tracks durchsuchen und vollständige Weblinks erhalten.",
+  "author": {
+    "name": "matecode"
+  },
+  "homepage": "https://github.com/matecode/mcp-marketplace",
+  "repository": "https://github.com/matecode/mcp-marketplace",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Bandcamp MCP",
+    "shortDescription": "Bandcamp nach Künstlern, Alben und Tracks durchsuchen und vollständige Weblinks erhalten.",
+    "developerName": "matecode",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ]
+  }
+}

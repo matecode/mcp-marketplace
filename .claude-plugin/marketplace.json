@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Persönliche Homelab-MCPs für Claude Code und Codex",
-    "version": "0.5.0"
+    "version": "0.6.0"
   },
   "plugins": [
     {
@@ -54,6 +54,12 @@
       "name": "shazam-mcp",
       "source": "./plugins/shazam-mcp",
       "description": "Importierte Shazam-Titel lesen, Exporte anfordern und den Bestand lokal verwalten.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "bandcamp-mcp",
+      "source": "./plugins/bandcamp-mcp",
+      "description": "Bandcamp nach Künstlern, Alben und Tracks durchsuchen und vollständige Weblinks erhalten.",
       "version": "0.1.0"
     }
   ]
