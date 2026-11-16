@@ -1,4 +1,4 @@
-"""Offline: Katalogkonsistenz, Pfade und ausschließlich öffentliche HTTP-Konfiguration."""
+"""Offline: Katalogkonsistenz, öffentliche HTTP-Konfiguration und Skill-Pakete."""
 from pathlib import Path
 import json
 import hashlib
@@ -21,10 +21,10 @@ def read(path):
 claude = read(".claude-plugin/marketplace.json")
 codex = read(".agents/plugins/marketplace.json")
 assert claude["name"] == codex["name"] == "mate-mcp"
-expected_names = {key + "-mcp" for key in EXPECTED}
+expected_names = {key + "-mcp" for key in EXPECTED} | {'shazam-export'}
 for catalog in (claude, codex):
     names = [entry["name"] for entry in catalog["plugins"]]
-    assert len(names) == len(set(names)) == len(EXPECTED)
+    assert len(names) == len(set(names)) == len(expected_names)
     assert set(names) == expected_names
 for key, scopes in EXPECTED.items():
     name = key + "-mcp"
@@ -64,4 +64,23 @@ assert actual == origin['files'], 'Incomplete or changed upstream skill bundle'
 assert len(actual) == 17, 'Expected entrypoint, 15 references and license'
 assert (ha / 'skills/home-assistant-best-practices/SKILL.md').is_file()
 assert (ha / 'skills/home-assistant-best-practices/LICENSE').is_file()
-print("Acht konsistente Plugins, zwei Kataloge; öffentliche HTTP/OAuth-Daten und vollständiger gepinnter HA-Skill.")
+relative = './plugins/shazam-export'
+ce = next(p for p in claude['plugins'] if p['name'] == 'shazam-export')
+oe = next(p for p in codex['plugins'] if p['name'] == 'shazam-export')
+assert ce['source'] == relative
+assert oe['source'] == {'source': 'local', 'path': relative}
+assert oe['policy'] == {'installation': 'AVAILABLE'}
+cm = read(relative + '/.claude-plugin/plugin.json')
+om = read(relative + '/.codex-plugin/plugin.json')
+assert cm['name'] == om['name'] == 'shazam-export'
+assert cm['version'] == om['version'] == ce['version'] == '0.1.0'
+assert 'mcpServers' not in cm and 'mcpServers' not in om
+assert not (ROOT / relative / '.mcp.json').exists()
+skill = ROOT / relative / 'skills/shazam-export'
+for path in ('SKILL.md', 'agents/openai.yaml', 'references/run.md', 'references/output.md',
+             'scripts/export.py', 'scripts/core.py', 'scripts/mobile.py', 'scripts/device.py'):
+    assert (skill / path).resolve().is_relative_to(skill.resolve())
+    assert (skill / path).is_file(), path
+    assert '[TODO' not in (skill / path).read_text(), path
+assert 'name: shazam-export' in (skill / 'SKILL.md').read_text()
+print("Neun konsistente Plugins: acht HTTP-MCPs, ein Export-Skill; beide Kataloge und gepinnter HA-Skill geprüft.")

@@ -1,6 +1,6 @@
 # Mate MCP Marketplace
 
-Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.6.1.
+Öffentlicher GitHub-Marketplace für **Claude Code** und **Codex CLI/Desktop**, Repository `matecode/mcp-marketplace`, Marketplace-ID `mate-mcp`, Version 0.7.0.
 
 ## Plugins
 
@@ -14,10 +14,11 @@
 | `homeassistant-mcp` | Home Assistant | `https://mcp.bunteban.de/homeassistant/mcp` |
 | `fileee-mcp` | Persönliches Fileee-Archiv | `https://mcp.bunteban.de/fileee/mcp` |
 | `bandcamp-mcp` | Bandcamp-Suche und Weblinks | `https://mcp.bunteban.de/bandcamp/mcp` |
+| `shazam-export` | Lokaler Android-Export als CSV und JSON | Skill; vorhandener lokaler Mobile MCP |
 
 Das Home-Assistant-Plugin bündelt zusätzlich den im [Video ab 20:43](https://www.youtube.com/watch?v=AL391nkWGIc&t=1243s) empfohlenen `home-assistant-best-practices`-Skill samt Referenzen. [Herkunft und Updatehinweise](plugins/homeassistant-mcp/README.md#skill-aus-dem-video).
 
-Jedes Plugin lässt sich einzeln installieren. Die Pakete starten keine lokalen Server; sie verbinden die bestehenden Homelab-Dienste über Streamable HTTP.
+Jedes Plugin lässt sich einzeln installieren. Acht MCP-Pakete verbinden bestehende Homelab-Dienste über Streamable HTTP. Das neunte Plugin [Shazam exportieren](plugins/shazam-export/README.md) enthält einen lokalen Skill mit Exportskripten; es benötigt einen vorhandenen Mobile MCP, Python und ADB. Es hat keinen eigenen Remote-Dienst oder OAuth-Login.
 
 ## Clienteinrichtung
 
@@ -27,7 +28,7 @@ Der Nutzer richtet Plugins und Remote-Connectoren selbst in seinen Clients ein u
 
 Der öffentliche Katalog kann über HTTPS ohne GitHub-Konto oder Git-Zugangsdaten geladen werden. Für diesen Weg die vollständige HTTPS-Repository-Adresse verwenden. Bei optionalem SSH-Zugang muss der Schlüssel bereits nutzbar und der GitHub-Hostschlüssel bekannt sein; Hostschlüsselprüfung nicht abschalten. Keine Tokens in Remote-URLs oder Manifesten eintragen.
 
-GitHub-Zugriff und MCP-Zugriff sind unabhängig. Home Assistant verwendet ab Plugin 0.3.0 die eigene HA-Anmeldung unter `https://ha.bunteban.de`; OAuth-Felder und zusätzliche Scopes leer lassen. Werkzeugrechte folgen dem Zugang der HA-Server-App. Die anderen Dienste verwenden Authentik und ihre jeweilige Freigabe; Mail/Kalender, LiZu und Fileee brauchen persönliche Kontoeinträge in OpenBao. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung. [Fileee](plugins/fileee-mcp/README.md) nutzt native OAuth-Anmeldung mit öffentlicher Client-ID `fileee-mcp` ohne Clientsecret; Dienstaktivierung und Clientabnahme sind dort separat dokumentiert.
+GitHub-Zugriff und MCP-Zugriff sind unabhängig. Home Assistant verwendet ab Plugin 0.3.0 die eigene HA-Anmeldung unter `https://ha.bunteban.de`; OAuth-Felder und zusätzliche Scopes leer lassen. Werkzeugrechte folgen dem Zugang der HA-Server-App. Die anderen HTTP-Dienste verwenden Authentik und ihre jeweilige Freigabe; Mail/Kalender, LiZu und Fileee brauchen persönliche Kontoeinträge in OpenBao. Obsidian bleibt an den freigegebenen Betreiber-Vault gebunden; eine Marketplace-Installation erzeugt keinen eigenen Vault. Kleinanzeigen verwendet die bestehende dienstspezifische Kontozuordnung. [Fileee](plugins/fileee-mcp/README.md) nutzt native OAuth-Anmeldung mit öffentlicher Client-ID `fileee-mcp` ohne Clientsecret; Dienstaktivierung und Clientabnahme sind dort separat dokumentiert.
 
 ## Claude Code
 
@@ -42,7 +43,7 @@ Alternativ mit explizitem SSH-Remote:
 claude plugin marketplace add git@github.com:matecode/mcp-marketplace.git
 ```
 
-Weitere Plugin-IDs aus der Tabelle einzeln installieren. In einer neuen Sitzung `/mcp` öffnen und den gewünschten Server authentifizieren. `/plugin` zeigt die installierten Plugins. Die `.mcp.json` enthält die vom jeweiligen Server benötigten OAuth-Scopes einschließlich `offline_access`.
+Weitere Plugin-IDs aus der Tabelle einzeln installieren. Für HTTP-Plugins in einer neuen Sitzung `/mcp` öffnen und den gewünschten Server authentifizieren. `/plugin` zeigt die installierten Plugins. Die `.mcp.json` enthält die vom jeweiligen Server benötigten OAuth-Scopes einschließlich `offline_access`.
 
 ## Codex CLI und Desktop
 
@@ -87,7 +88,7 @@ Installation allein bestätigt weder OAuth-Login noch Werkzeugfunktion, Refresh 
 
 Claude Code verwendet `.claude-plugin/marketplace.json` mit `owner`, optionalen `metadata` und einem Plugin-Pfad als `source`-String. Der native Codex-Katalog unter `.agents/plugins/marketplace.json` verwendet hier ein `source`-Objekt sowie `interface.displayName`, `category` und `policy` für Installations-/Anmeldeverhalten.
 
-Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben acht Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit `oauth.client_id`, Callbackport und Scope-Liste für die geprüfte CLI-Version. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
+Codex unterstützt auch das Claude-kompatible Marketplace-Format: Zwei Dateien sind deshalb keine zwingende Voraussetzung. Dieser Marketplace verwendet bewusst beide nativen Katalogformate, um Codex-spezifische Anzeige- und Policy-Felder ausdrücklich bereitzustellen. Beide Kataloge zeigen auf dieselben neun Plugin-Verzeichnisse. Fileee benötigt eine bereitgestellte öffentliche Client-ID: Claude nutzt `.mcp.json`, Codex `mcp.codex.json` mit `oauth.client_id`, Callbackport und Scope-Liste für die geprüfte CLI-Version. Die übrigen Verbindungen stehen gemeinsam in der jeweiligen `.mcp.json`. Der Offline-Prüfer kontrolliert Namen, Pfade, Policies und beide Fileee-Verbindungsformate.
 
 ## Fileee 0.1.1 – Paket- und Dienstprüfung, 2026-11-03
 
@@ -97,7 +98,7 @@ Der Dienst ist öffentlich aktiv; tatsächliche 44 Werkzeuge und persönliche Fi
 
 ## Pflege und Prüfung
 
-Claude: `.claude-plugin/marketplace.json`. Codex: `.agents/plugins/marketplace.json`. Beide verweisen auf dieselben Verzeichnisse in `plugins/`. Je Plugin werden `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json` und `.mcp.json` gepflegt. Die nachweislich unterstützten Kompatibilitätsformate vermeiden hier eine zusätzliche portable Manifest-Kopie.
+Claude: `.claude-plugin/marketplace.json`. Codex: `.agents/plugins/marketplace.json`. Beide verweisen auf dieselben Verzeichnisse in `plugins/`. Je Plugin werden `.claude-plugin/plugin.json` und `.codex-plugin/plugin.json` gepflegt; HTTP-Plugins enthalten zusätzlich `.mcp.json`. Skill-Plugins verwenden `skills/` im Plugin-Root. Die nachweislich unterstützten Kompatibilitätsformate vermeiden hier eine zusätzliche portable Manifest-Kopie.
 
 ```sh
 python3 scripts/check-marketplace.py
@@ -148,8 +149,12 @@ Sechstes Plugin `homeassistant-mcp`, stabile HTTPS-Adresse und Scopes einschlie�
 
 ## Entfernt: Shazam MCP – 16.11.2026
 
-Auf Nutzerauftrag aus beiden Katalogen entfernt und der Remote-Dienst zurückgebaut. Bereits installierte Shazam-Plugins im jeweiligen Client entfernen. Der lokale Mobile MCP für einen Android-Export gehört nicht zu diesem Marketplace.
+Auf Nutzerauftrag aus beiden Katalogen entfernt und der Remote-Dienst zurückgebaut. Bereits installierte Shazam-Plugins im jeweiligen Client entfernen. Der lokale Original-Mobile-MCP bleibt separat eingerichtet. Das neue Skill-Plugin `shazam-export` bündelt die Exportanleitung und Skripte; es reaktiviert keinen Remote-Shazam-MCP.
 
 ## Bandcamp 0.1.0
 
 [Einrichtung und Verwendung](plugins/bandcamp-mcp/README.md): unabhängige Bandcamp-Suche mit vollständigen Track-, Album- und Künstlerlinks. Kein Bandcamp-Konto nötig; Authentik-Freigabe erforderlich. Bei einer Bot-Prüfung oder geändertem Antwortformat wird der Fehler markiert und ein Such-Weblink geliefert. Persönliche Clientinstallation und Anmeldung übernimmt der Nutzer.
+
+## Shazam exportieren 0.1.0
+
+[Installation, lokale Voraussetzungen und Export](plugins/shazam-export/README.md). Reines Skill-Plugin für die deutsche Android-Shazam-Oberfläche mit Wiederaufnahme, temporärer USB-Wachhaltung und positionsgetreuem CSV/JSON-Export. Die Zeitannahme wird ausdrücklich gewählt; feste `+02:00` und saisonale `Europe/Berlin` sind getrennte Optionen. Persönliche Titel und Arbeitsdaten bleiben außerhalb des öffentlichen Pakets.
