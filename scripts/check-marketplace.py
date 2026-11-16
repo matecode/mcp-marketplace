@@ -12,6 +12,7 @@ EXPECTED = {
     "lizu": "openid profile email offline_access lizu",
     "homeassistant": None,
     "fileee": "openid profile email offline_access fileee",
+    "shazam": "openid profile email offline_access shazam",
 }
 
 def read(path):
@@ -63,4 +64,4 @@ assert actual == origin['files'], 'Incomplete or changed upstream skill bundle'
 assert len(actual) == 17, 'Expected entrypoint, 15 references and license'
 assert (ha / 'skills/home-assistant-best-practices/SKILL.md').is_file()
 assert (ha / 'skills/home-assistant-best-practices/LICENSE').is_file()
-print("Sieben konsistente Plugins, zwei Kataloge; öffentliche HTTP/OAuth-Daten und vollständiger gepinnter HA-Skill.")
+print("Acht konsistente Plugins, zwei Kataloge; öffentliche HTTP/OAuth-Daten und vollständiger gepinnter HA-Skill.")

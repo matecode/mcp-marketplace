@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "shazam": {
+      "type": "http",
+      "url": "https://mcp.bunteban.de/shazam/mcp",
+      "oauth": {
+        "scopes": "openid profile email offline_access shazam"
+      }
+    }
+  }
+}
